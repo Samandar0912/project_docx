@@ -21,8 +21,9 @@
     <section class="categorys">
         <div class="container">
             <ul>
+                <li><a href="#" class='active'>Hammasi</a></li>
                 {% for categorys in category %}
-                <li><a href="#">categorys</a></li>
+                    <li><a href="#">{{ categorys.name }}</a></li>
                 {% endfor %}
 
             </ul>
@@ -32,24 +33,28 @@
     <section>
         <div class="container d-flex flex-wrap mb-3">
            
+            {% for product in products %}
+            {% if forloop.counter <= 6 %}
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Po’lat eritish uchun elektr arq pechini ayirish loyihasi</h5>
+                    <h5 class="card-title">{{ product.name|truncatewords:7 }}</h5>
                     <div class="text-name">
-                        <p class="p1">Muallif: User112 </p>
-                        <p class="p2">Bo'lim: Refarat </p>
+                        <p class="p1">Muallif: {{ product.Author }} </p>
+                        <p class="p2">Bo'lim: {{ product.category }} </p>
                     </div>
                     <div class="text-data">
                         <p class="p1">Yuklab olishlar soni: 0 </p>
-                        <p class="p2">Yuklangan Sana:  </p>
+                        <p class="p2">Yuklangan Sana: {{ product.created }} </p>
                     </div>                    
                     <div class="card-line"></div>
                     <div class="text-btn">
                         <a href="#">Ko'rish</a>
-                        <h4>99 000 UZS</h4>
+                        <h4>{{ product.price }} UZS</h4>
                     </div>
                 </div>
             </div>
+            {% endif %}
+            {% endfor %}
            
 
         

@@ -10,9 +10,13 @@
             <div class="navbar-box-bottom">
                 <h2 class="link-h2">Docx</h2>
                 <ul>
-                    <li><a href="#">Refarat</a></li>
-                    <li><a href="#">Diplom Ishi</a></li>
-                    <li><a href="#">Boshqalar</a></li>
+                    {% for categorys in category %}
+                        {% if forloop.counter <= 2 %}
+                            <li><a href="#">{{ categorys.name }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                <li><a href="#">Boshqalar</a></li>
+                
                 </ul>
             </div>
         </div>

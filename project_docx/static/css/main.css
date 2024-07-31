@@ -175,6 +175,12 @@ body{
     transition: all .2s;
     
 }
+.active{
+    color: #fff !important;
+    margin-left: -28px !important ;
+    background-color: #337ab7;
+    
+}
 
 
 /* ########################################################### */
@@ -186,6 +192,10 @@ body{
     border-radius: none !important;
     margin: 5px;
     padding: 15px;
+}
+.card h5{
+    font-weight: 600;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 

@@ -1,7 +1,8 @@
 from django.urls import path
-from .views import *
+from .views import IndexView
 
+app_name = 'main' #=> Asosiy app
 urlpatterns = [
-    path('', index, name='index'),
+    path('', IndexView.as_view(), name='index'),
     
 ]
