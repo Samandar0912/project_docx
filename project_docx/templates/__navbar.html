@@ -17,7 +17,7 @@
                 <ul>
                     {% for i in category %}
                         {% if forloop.counter <= 2 %}
-                            <li><a href="#">{{ i.name }}</a></li>
+                            <li><a href="{% url 'main:category_list' i.pk %}">{{ i.name }}</a></li>
                         {% endif %}
                     {% endfor %}
                     <li class="vse"><a href="#">Boshqalar</a>
@@ -25,7 +25,7 @@
                             <ul class="ul-2">
 
                                 {% for i in category %}
-                                    <li class="li-2"><a class="a2" href="{% url 'category' i.name %}">{{ i.name }}</a></li>
+                                    <li class="li-2"><a class="a2" href="{% url 'main:category_list' i.pk %}">{{ i.name }}</a></li>
                                 {% endfor %}
 
                             </ul>

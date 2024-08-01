@@ -1,22 +1,24 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="bootstrap.css">
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+    <link rel="stylesheet" href="{% static "css/login.css" %}">
     <title>Document</title>
 </head>
 <body>
   <div class="container">
-    <form class='login-form'>
+    <form method='post'   class='login-form'>{% csrf_token %}
       <div class="box">
         <h2>Login</h2>
         <p>Docx</p>
       </div>
       <div class="flex-row">
-        <input id="username" placeholder='Username' type='text'>
-        <input id="password" placeholder='Password' type='password'>
+        {{ form }}
+        {% comment %} <input id="username" placeholder='Username' type='text'>
+        <input id="password" placeholder='Password' type='password'> {% endcomment %}
       </div>
       <button type="submit">Kirish</button>
       <a href='#'>Ro'yhatdan utmaganmisiz?</a>
@@ -25,6 +27,6 @@
     
   </div>
     
-    <script src="./bootstrap.js"></script>
+    <script src="{% static "js/bootstrap.js" %}"></script>
 </body>
 </html>

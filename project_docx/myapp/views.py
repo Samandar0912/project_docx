@@ -22,6 +22,28 @@ class IndexView(View):
         }
         return render(request, "index.html", context)
     
+
+def categoryFilter(request,pk):
+    products = Product.objects.filter(category_id=pk)
+    category = Category.objects.all()
+    
+    context = {
+        "category":category,
+        "products":products,
+    }
+    return render(request, "index.html", context)
+
+
+def articleFilter(request,pk):
+    products = Product.objects.filter(category_id=pk)
+    science = CategoryScience.objects.all()
+    context = {
+        "science":science,
+        "products":products,
+    }
+    return render(request, "index.html", context)
+    
+
 class ModelDetailView(generic.DetailView):
     def get(self, request):
         products = Product.objects.all()
