@@ -11,7 +11,7 @@ class CustomUser(AbstractUser):
         return self.username
     
 class Saved(models.Model):
-    product = models.ForeignKey("products.Article", on_delete=models.CASCADE)
+    product = models.ForeignKey("products.Product", on_delete=models.CASCADE)
     author = models.ForeignKey(CustomUser,  on_delete=models.CASCADE)
     date = models.DateField(auto_now_add=True)
     

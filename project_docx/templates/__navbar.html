@@ -1,8 +1,13 @@
 <nav class="navbar-top">
     <div class="container">
         <div class="navbar-box-top">
-            <a href="#">Fayl yuklash</a>
-            <a href="#">Profil</a>
+            {% if request.user.is_authenticated %}
+                <a href="#">Fayl yuklash</a>
+                <a href="#">Profil</a>
+            {% else %}
+                <a href="#">kirish</a>
+                <a href="#">Ro'yxatdan o'tish</a>
+            {% endif %}
         </div>
     </div>
     <div class="bg-2">
@@ -10,12 +15,22 @@
             <div class="navbar-box-bottom">
                 <h2 class="link-h2">Docx</h2>
                 <ul>
-                    {% for categorys in category %}
+                    {% for i in category %}
                         {% if forloop.counter <= 2 %}
-                            <li><a href="#">{{ categorys.name }}</a></li>
+                            <li><a href="#">{{ i.name }}</a></li>
                         {% endif %}
                     {% endfor %}
-                <li><a href="#">Boshqalar</a></li>
+                    <li class="vse"><a href="#">Boshqalar</a>
+                        <div class="block-p">
+                            <ul class="ul-2">
+
+                                {% for i in category %}
+                                    <li class="li-2"><a class="a2" href="{% url 'category' i.name %}">{{ i.name }}</a></li>
+                                {% endfor %}
+
+                            </ul>
+                        </div>
+                    </li>
                 
                 </ul>
             </div>
