@@ -3,7 +3,9 @@
         <div class="navbar-box-top">
             {% if request.user.is_authenticated %}
                 <a href="#">Fayl yuklash</a>
-                <a href="#">Profil</a>
+                <a href="{# url "users:profile"  #}">Profil</a>
+                <a href="{% url "password_change" %}">Chane Password</a>
+                <a href="{% url "logout" %}">Log out</a>
             {% else %}
                 <a href="{% url "login" %}">kirish</a>
                 <a href="{% url "users:signup" %}">Ro'yxatdan o'tish</a>
