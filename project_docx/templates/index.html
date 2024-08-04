@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+    
+    <section class="bg-img">
+        <div class="container cont-nav-center">
+            <h1>Hujjatlarni yuklang va pul ishlang</h1>
+            <p>Hujjatlarni sotish uchun sayt</p>
+            <div class="nav-cont-line"></div>
+            <div class="cont-nav-center-box">
+                <div class="search-input">
+                    <input type="text" placeholder="qidirish">
+                    <a href="#"><img src="{% static "img/Remove-bg.ai_1721827232078.png" %}"></a>
+                </div>
+            </div>
+                
+        </div>
+    </section>
+ 
+    <section class="categorys">
+        <div class="container">
+            <ul>
+                <li><a href="#" class='active'>Hammasi</a></li>
+                {% for i in science %}
+                    <li><a href="{% url "main:article_list" i.pk %}">{{ i.name }}</a></li>
+                {% endfor %}
+
+            </ul>
+        </div>
+    </section>
+    
+    <section>
+        <div class="container d-flex flex-wrap mb-3">
+           
+            {% for product in products %}
+            {% if forloop.counter <= 6 %}
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name|truncatewords:7 }}</h5>
+                    <div class="text-name">
+                        <p class="p1">Muallif: {{ product.Author }} </p>
+                        <p class="p2">Bo'lim: {{ product.category }} </p>
+                    </div>
+                    <div class="text-data">
+                        <p class="p1">Yuklab olishlar soni: 0 </p>
+                        <p class="p2">Yuklangan Sana: {{ product.created }} </p>
+                    </div>                    
+                    <div class="card-line"></div>
+                    <div class="text-btn">
+                        <a href="#">Ko'rish</a>
+                        <h4>{{ product.price }} UZS</h4>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+           
+
+        
+  
+        </div>
+    </section>
+
+    <div class="container">
+        <nav aria-label="Page navigation example ">
+            <ul class="pagination justify-content-center">
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+    </div>
+
+{% endblock content %}
+
+
+    

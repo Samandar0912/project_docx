@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load static %}
+{% load crispy_forms_tags %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+    <link rel="stylesheet" href="{% static "css/login.css" %}">
+    <title>Update</title>
+</head>
+<body>
+  <div class="container">
+    <form method='post' class='signup-form'>{% csrf_token %}
+      <div class="box">
+        <h2>Profilni Taxrirlash</h2>
+        <p>{{ request.user }}</p>
+      </div>
+      <div class="flex-row2 ">
+        {{ form|crispy }}
+        {% comment %} <input id="username" placeholder='Username' type='text'>
+        <input id="password" placeholder='Password' type='password'> {% endcomment %}
+      </div>
+      <button type="submit">Saqlash</button>
+    </form>
+
+    
+  </div>
+    
+    <script src="{% static "js/bootstrap.js" %}"></script>
+</body>
+</html>
