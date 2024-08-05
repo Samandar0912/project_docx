@@ -21,7 +21,7 @@
     <section class="categorys">
         <div class="container">
             <ul>
-                <li><a href="#" class='active'>Hammasi</a></li>
+                <li><a href="{% url "main:index" %}" class='active'>Hammasi</a></li>
                 {% for i in science %}
                     <li><a href="{% url "main:article_list" i.pk %}">{{ i.name }}</a></li>
                 {% endfor %}
@@ -34,7 +34,7 @@
         <div class="container d-flex flex-wrap mb-3">
            
             {% for product in products %}
-            {% if forloop.counter <= 6 %}
+            {% if forloop.counter <= 16 %}
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">{{ product.name|truncatewords:7 }}</h5>
@@ -48,8 +48,8 @@
                     </div>                    
                     <div class="card-line"></div>
                     <div class="text-btn">
-                        <a href="#">Ko'rish</a>
-                        <h4>{{ product.price }} UZS</h4>
+                        <a href="{% url "products:detail" product.pk %}">Ko'rish</a>
+                        {% comment %} <h4>{{ product.price }} UZS</h4> {% endcomment %}
                     </div>
                 </div>
             </div>

@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+<div class="container p-5 mb-5">
+    <section>
+        <div class="container cont-user">
+            <div class="row">
+              
+                <div class="col-md-4 card p-5">
+                    <h3 class="mb-4">Dokument malumoti</h3>
+                    <div class="d-flex justify-content-between">
+                        <div><span>Narxi:</span></div>
+                        <div> {{ product.price }} UZS</div>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between">
+                        <div><span>Hajmi:</span></div>
+                        <div> {{ product.file.size }} KB </div>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between">
+                        <div><span>Yuklash sanasi:</span></div>
+                        <div>{{ product.created }}</div>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between">
+                        <div><span>Bo'lim:</span></div>
+                        <div> {{ product.category }} </div>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between">
+                        <div><span>Fan:</span></div>
+                        <div>{{ product.categoryScience }}</div>
+                    </div>
+                
+                    <hr>
+                    <div class="d-flex justify-content-between">
+                        <div><span>Sotuvchi:</span></div>
+                        <div>{{ product.Author }}</div>
+                    </div>        
+                    <hr>
+                    <div class="d-flex justify-content-between">
+  
+                        <a href="{% url "products:update" product.pk %}" class='btn btn-success'>Taxrirlash</a>
+                        <a href="{% url "products:delate" product.pk %}" class='btn btn-danger'>O'chirish</a>    
+                        
+                    </div>
+
+                </div>
+
+                <div class="col">
+                    <div class="card" style="width: 100% !important;">
+                        <center><h4>Ommaviy axborot rivojlantirishga ta’siri vositalarning bola ma’naviyatini rivojlantirishga ta’siri</h4></center>
+                    </div>
+                   
+                   
+                    <div class="card" style="width: 100% !important;">
+                        <div class="d-flex justify-content-around">
+                            <a href='' class='btn btn-success'>Click orqali</a>
+                            <a href='' class='btn btn-success'>Payme orqali</a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    
+</div>
+
+    
+ 
+
+
+
+{% endblock content %}

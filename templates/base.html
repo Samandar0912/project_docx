@@ -9,14 +9,71 @@
     <title>Document</title>
 </head>
 <body>
-    {% include "__navbar.html" %}
+    <div>
+        <nav class="navbar-top">
+            <div class="container">
+                <div class="navbar-box-top">
+                    {% if request.user.is_authenticated %}
+                        <a href="{% url "products:new" %}">Fayl yuklash</a>
+                        <a href="{% url "users:profile" request.user  %}">Profil</a>
+                        <a href="{% url "logout" %}">Log out</a>
+                    {% else %}
+                        <a href="{% url "login" %}">kirish</a>
+                        <a href="{% url "users:signup" %}">Ro'yxatdan o'tish</a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="bg-2">
+                <div class="container">
+                    <div class="navbar-box-bottom">
+                        <h2 class="link-h2"><a href='{% url "main:index" %}' style='text-decoration:none; color:#1a1a1a;'>Docx</a></h2>
+                        <ul>
+                            {% for i in category %}
+                                {% if forloop.counter <= 2 %}
+                                    <li><a href="{% url 'main:category_list' i.pk %}">{{ i.name }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                            <li class="vse"><a href="#">Boshqalar</a>
+                                <div class="block-p">
+                                    <ul class="ul-2">
+        
+                                        {% for i in category %}
+                                            <li class="li-2"><a class="a2" href="{% url 'main:category_list' i.pk %}">{{ i.name }}</a></li>
+                                        {% endfor %}
+        
+                                    </ul>
+                                </div>
+                            </li>
+                        
+                        </ul>
+                    </div>
+                </div>
+            </div>
+                
+        </nav>
+    </div>
     
-    {% block content %}{% endblock content %}
+
+    <div>{% block content %}{% endblock content %}</div>
     
     
-    
-    
-    {% include "__footer.html" %}
+    <div>
+        <footer>
+            <div class="container p-3 d-flex justify-content-between">
+                <div class="left">
+                    <h6>&copy; Copyright 2023-2024. Created by IT-Politech Group</h6>
+                </div>
+                <div class="right">
+                    <ul>
+                        <li><a href="#">Balansdan chiqarish bo'yicha ko'rsatmalar</a></li>
+                        <li><a href="#">Biz bilan aloqa</a></li>
+                        <li><a href="#">Saytdan foydalanish yuriqnomasi</a></li>
+                        <li><a href="#">Fayl yuklash yuriqnomasi</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
     <script src="{% static "js/bootstrap.js" %}"></script>
     <script src="{% static "js/jquery.js" %}"></script>
 </body>

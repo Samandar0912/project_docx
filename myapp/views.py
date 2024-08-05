@@ -1,7 +1,5 @@
 from django.shortcuts import render, redirect
 from django.views import View
-from django.views import generic
-
 from products.models import CategoryScience, Category, Product
 
 # Create your views here.
@@ -43,15 +41,3 @@ def articleFilter(request,pk):
     }
     return render(request, "index.html", context)
     
-
-class ModelDetailView(generic.DetailView):
-    def get(self, request):
-        products = Product.objects.all()
-        category = Category.objects.all()
-        science = CategoryScience.objects.all()
-        context = {
-            "products":products,
-            "category":category,
-            "science":science,
-        }  
-        return render(request, "block/see.html", context)

@@ -29,10 +29,10 @@ class CategoryScience(models.Model):
 
 class Product(models.Model):
     Author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    categoryScience = models.ForeignKey("CategoryScience", on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Kategorya')
+    categoryScience = models.ForeignKey("CategoryScience", on_delete=models.CASCADE, verbose_name='Kategorya Fanlar')
     name = models.CharField( max_length=150, verbose_name='Mavzu')
-    price = models.CharField( max_length=50, verbose_name='narxi')
+    price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='narxi')
     created = models.DateTimeField( auto_now_add=False, verbose_name='yuklangan sana')
     file = models.FileField( upload_to='Files/' )
     
