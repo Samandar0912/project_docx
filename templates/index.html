@@ -33,28 +33,29 @@
     <section>
         <div class="container d-flex flex-wrap mb-3">
            
-            {% for product in products %}
+            {% for i in product %}
             {% if forloop.counter <= 16 %}
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">{{ product.name|truncatewords:7 }}</h5>
-                    <div class="text-name">
-                        <p class="p1">Muallif: {{ product.Author }} </p>
-                        <p class="p2">Bo'lim: {{ product.category }} </p>
-                    </div>
-                    <div class="text-data">
-                        <p class="p1">Yuklab olishlar soni: 0 </p>
-                        <p class="p2">Yuklangan Sana: {{ product.created }} </p>
-                    </div>                    
-                    <div class="card-line"></div>
-                    <div class="text-btn">
-                        <a href="{% url "products:detail" product.pk %}">Ko'rish</a>
-                        {% comment %} <h4>{{ product.price }} UZS</h4> {% endcomment %}
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ i.name|truncatewords:7 }}</h5>
+                        <div class="text-name">
+                            <p class="p1">Muallif: {{ i.Author }}</p>
+                            <p class="p2">Bo'lim: {{ i.category }}</p>
+                        </div>
+                        <div class="text-data">
+                            <p class="p1">Yuklab olishlar soni: 0</p>
+                            <p class="p2">Yuklangan Sana: {{ i.created }}</p>
+                        </div>
+                        <div class="card-line"></div>
+                        <div class="text-btn">
+                            <a href="{% url 'products:detail' i.pk %}">Ko'rish</a>
+                            <h4>{{ i.price }} UZS</h4>
+                        </div>
                     </div>
                 </div>
-            </div>
             {% endif %}
-            {% endfor %}
+        {% endfor %}
+        
            
 
         

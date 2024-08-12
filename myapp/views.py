@@ -14,7 +14,7 @@ class IndexView(View):
         category = Category.objects.all()
         science = CategoryScience.objects.all()
         context = {
-            "products":products,
+            "product":products,
             "category":category,
             "science":science,
         }

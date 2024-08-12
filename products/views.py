@@ -16,7 +16,7 @@ def new_product(request):
     elif request.method == 'POST':
         form = NewProductForm(data=request.POST, files=request.FILES)
         if form.is_valid():
-            form.save(request=request)  # request argumentini qo'shamiz
+            form.save(request)
             return redirect('main:index')
         
         return render(request, 'product_create.html', {'form': form})
