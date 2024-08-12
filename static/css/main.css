@@ -417,3 +417,16 @@ span{
     height: 50px !important;
     padding: 0 !important;
 }
+
+
+
+.buy-logo-a{
+    border: 1px solid #6666661f;
+    padding: 10px 25px;
+}
+
+.buy-logo-img{
+    object-fit: cover;
+    width: auto;
+    height: 40px;
+}

@@ -29,21 +29,20 @@ def product_detail(request,pk):
 
 
 @login_required(login_url='login')
-def product_update(request,pk):
-    if request.user == Product.Author:
-        product = get_object_or_404(Product, pk=pk)
+def product_update(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    
+    if request.user == product.Author:
         if request.method == 'GET':
             form = ProdctForm(instance=product)
-            return render(request, 'product_update.html', {'form':form})
         elif request.method == 'POST':
             form = ProdctForm(instance=product, data=request.POST, files=request.FILES)
-            form.is_valid()
-            form.save()
-            return redirect('products:detail', pk)
-        return render(request, 'product_update.html', {'form':form})
-
+            if form.is_valid():
+                form.save()
+                return redirect('main:index')
+        return render(request, 'product_update.html', {'form': form})
     else:
-        return redirect('main:index')    
+        return redirect('products:detail', pk=pk)   
     
         
 def product_delate(request,pk):
