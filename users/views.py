@@ -7,7 +7,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import CustomUser
 
 # Create your views here.
+from django.contrib.auth import logout
 
+def logout_view(request):
+    logout(request)
+    return redirect('login') 
 
 class SignupView(UserPassesTestMixin ,View):
     def get(self,request):
